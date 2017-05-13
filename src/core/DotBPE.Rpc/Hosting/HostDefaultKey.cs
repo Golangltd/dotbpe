@@ -7,5 +7,7 @@ namespace DotBPE.Rpc.Hosting
         public const string HOSTADDRESS_KEY = "hostAddress";
 
         public const string STARTUPTYPE_KEY = "startupType";
+
+        public const string REMOTESERVICES_KEY ="remoteServices";
     }
 }

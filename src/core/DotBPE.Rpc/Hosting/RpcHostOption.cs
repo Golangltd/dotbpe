@@ -5,9 +5,9 @@ namespace DotBPE.Rpc.Hosting
 {
     public class RpcHostOption
     {
-        public RpcHostOption()
-        { }
 
+
+        private IConfiguration _builderConfiguration;
         public RpcHostOption(IConfiguration configuration)
         {
             //初始化一些属性咯
@@ -15,6 +15,7 @@ namespace DotBPE.Rpc.Hosting
             {
                 throw new ArgumentNullException(nameof(configuration));
             }
+            _builderConfiguration = configuration;
             this.ApplicationName = configuration[HostDefaultKey.APPNAME_KEY];
             this.EnvironmentName = configuration[HostDefaultKey.EnvironmentName_KEY];
             if(string.IsNullOrEmpty(EnvironmentName)){
@@ -47,6 +48,9 @@ namespace DotBPE.Rpc.Hosting
             this.StartupType = configuration[HostDefaultKey.STARTUPTYPE_KEY];
         }
 
+        public string GetSetting(string key){
+            return _builderConfiguration[key];
+        }
         public string ApplicationName { get; set; }
 
         public string HostIP { get; set; }

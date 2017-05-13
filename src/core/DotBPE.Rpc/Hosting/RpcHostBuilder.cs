@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using System.Runtime.ExceptionServices;
-using System.Text;
 using DotBPE.Rpc.DefaultImpls;
 using DotBPE.Rpc.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.ObjectPool;
 
 namespace DotBPE.Rpc.Hosting
@@ -103,7 +98,7 @@ namespace DotBPE.Rpc.Hosting
             services.AddOptions();
             services.Configure<Options.RpcClientOption>(_config);  // 添加作为客户端的配置
 
-            services.Configure<Options.RemoteServicesOption>(_config.GetSection("remoteServices"));
+            services.Configure<Options.RemoteServicesOption>(_config.GetSection(HostDefaultKey.REMOTESERVICES_KEY));
 
 
             services.AddTransient<IAppBuilder, AppBuilder>();
